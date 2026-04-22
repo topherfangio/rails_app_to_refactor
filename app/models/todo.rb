@@ -41,6 +41,9 @@ class Todo < ApplicationRecord
   validates :due_at, presence: true, allow_nil: true
   validates :completed_at, presence: true, allow_nil: true
 
+  # As models get bigger, I would investigate using ActiveInteraction to extract
+  # some of this logic
+
   def overdue?
     return false if !due_at || completed_at
 

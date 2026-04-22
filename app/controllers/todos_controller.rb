@@ -14,6 +14,7 @@ class TodosController < ApplicationController
   end
 
   def index
+    # Possible security issue with order_by accepting unfiltered params
     todos = @todos.filter_by_status(params).order_by(params).map(&:serialize_as_json)
 
     render_json(200, todos:)

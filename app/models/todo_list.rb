@@ -8,6 +8,7 @@ class TodoList < ApplicationRecord
   scope :default, -> { where(default: true) }
   scope :non_default, -> { where(default: false) }
 
+  # Code duplication in todo.rb
   scope :order_by, ->(params) {
     order = params[:order]&.strip&.downcase == 'asc' ? :asc : :desc
 

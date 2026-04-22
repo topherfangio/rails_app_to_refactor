@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       if password != password_confirmation
         render_json(422, user: { password_confirmation: ["doesn't match password"] })
       else
+        # Would recommend pulling the user creation logic into a separate interaction / concern
         password_digest = Digest::SHA256.hexdigest(password)
 
         user = User.new(

@@ -21,6 +21,9 @@ class User < ApplicationRecord
     end
 
     def send_welcome_email
+      # Consider moving this into a workflow engine (ideally with visualizations
+      # in an admin interface) so that we can always see visually what is
+      # happening with the application
       UserMailer.with(user: self).welcome.deliver_later
     end
 end

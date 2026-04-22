@@ -112,6 +112,10 @@ class TodosControllerUncompleteTest < ActionDispatch::IntegrationTest
 
     todo.reload
 
+    #
+    # As tests start to get larger, we want to see where it makes sense to break the tests into
+    # smaller groups so that it is easier to determine which part of the logic is breaking.
+    #
     assert_predicate(todo, :incomplete?)
 
     json = JSON.parse(response.body)
